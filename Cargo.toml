@@ -1,7 +1,9 @@
 [package]
+edition = "2018"
 name = "http-full-proxy"
 version = "0.1.0"
-authors = ["Rotem Yaari"]
+authors = ["Rotem Yaari", "Damjan Georgievski"]
+license = "Apache-2.0"
 
 [dependencies]
 actix = "0.7.5"

@@ -1,10 +1,4 @@
 #![deny(warnings)]
-extern crate actix;
-extern crate actix_web;
-extern crate clap;
-extern crate failure;
-extern crate futures;
-extern crate url;
 
 use actix_web::{
     client, http, server, App, AsyncResponder, Error, HttpMessage, HttpRequest,
