@@ -32,6 +32,13 @@ fn forward(
         .streaming(req.payload())
         .unwrap();
 
+    // can this header be snicked through an ALB?
+    if let Some(identity) = req.headers().get("x-amzn-oidc-identity") {
+        forwarded_req.headers_mut().insert("REMOTE_USER", identity.clone());
+    } else {
+        forwarded_req.headers_mut().remove("REMOTE_USER");
+    }
+
     if let Some(addr) = req.peer_addr() {
         match forwarded_req.headers_mut().entry("x-forwarded-for") {
             Ok(http::header::Entry::Vacant(entry)) => {
